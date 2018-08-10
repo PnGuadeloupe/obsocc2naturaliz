@@ -359,8 +359,7 @@ INNER JOIN programme_externe.png_lien_personne_occtax AS pp ON pp.id_personne_pn
 
 -- Mise à jour de relations spatiales
 SELECT occtax.occtax_update_spatial_relationships(
-    ARRAY['PNG-obsocc'],
-    '971'
+    ARRAY['PNG-obsocc']
 );
 
 -- Mise à jour des critères de sensibilité et de diffusion

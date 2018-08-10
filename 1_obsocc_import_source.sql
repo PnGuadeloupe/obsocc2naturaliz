@@ -60,6 +60,7 @@ CREATE INDEX ON programme_externe.obsocc_pnf_dur (CAST(cd_nom AS bigint));
 CREATE INDEX ON programme_externe.obsocc_pnf_dur (id_obs);
 
 -- Table des personnes
+DROP FOREIGN TABLE IF EXISTS programme_externe.personne;
 CREATE FOREIGN TABLE programme_externe.personne (
     id_personne int4,
     remarque text ,
@@ -86,6 +87,7 @@ SERVER pnf_svr
 OPTIONS (table_name 'personne', schema_name 'md');
 ;
 
+DROP FOREIGN TABLE IF EXISTS programme_externe.structure_pnf;
 CREATE FOREIGN TABLE programme_externe.structure_pnf
 (
   id_structure integer,
