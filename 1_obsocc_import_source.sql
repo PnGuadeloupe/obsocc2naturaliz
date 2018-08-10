@@ -86,6 +86,33 @@ SERVER pnf_svr
 OPTIONS (table_name 'personne', schema_name 'md');
 ;
 
+CREATE FOREIGN TABLE programme_externe.structure_pnf
+(
+  id_structure integer,
+  nom_structure text,
+  detail_nom_structure text,
+  statut text,
+  adresse_1 text,
+  code_postal text,
+  ville text,
+  pays text,
+  tel text,
+  fax text,
+  courriel_1 text,
+  courriel_2 text,
+  site_web text,
+  remarque text,
+  createur integer,
+  diffusable boolean,
+  date_maj date
+ )
+ SERVER pnf_svr
+OPTIONS (table_name 'structure', schema_name 'md');
+;
+
+DROP TABLE IF EXISTS programme_externe.structure;
+CREATE TABLE programme_externe.structure AS
+SELECT * FROM programme_externe.structure_pnf;
 
 -- table des personnes
 ALTER TABLE occtax.personne ADD COLUMN IF NOT EXISTS identifiant_origine INTEGER;
@@ -107,8 +134,7 @@ SELECT DISTINCT
     TRIM(p.prenom),
     UPPER(TRIM(p.nom)),
     False AS anonymiser,
-    p.id_personne,
-    ''
+    p.id_personne
 FROM programme_externe.personne AS p
 INNER JOIN programme_externe.structure AS s ON s.id_structure = p.id_structure
 LEFT JOIN occtax.personne op
