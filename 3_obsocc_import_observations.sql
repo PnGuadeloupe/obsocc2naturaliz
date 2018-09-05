@@ -84,7 +84,7 @@ SELECT
         THEN s.cd_nom::bigint
         ELSE t.cd_ref
     END AS cd_ref,
-    '10.0' AS version_taxref,
+    '11.0' AS version_taxref,
     CASE
         WHEN s.nom_complet IS NULL THEN s.nom_vern
         ELSE s.nom_complet

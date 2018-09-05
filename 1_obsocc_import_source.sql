@@ -181,7 +181,7 @@ FROM programme_externe.obsocc_pnf_dur AS s;
 
 
 -- Tables des lieux-dit
-DROP TABLE IF EXISTS programme_externe.lieu_dit;
+DROP FOREIGN TABLE IF EXISTS programme_externe.lieu_dit;
 CREATE FOREIGN TABLE IF NOT EXISTS programme_externe.lieu_dit (
         id text,
         nom text,
